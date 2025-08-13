@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <div class="hero-inner">
+    <h1>Fast Video Downloader</h1>
+    <p class="muted">Supports YouTube (priority), Facebook, Instagram & more.</p>
+
+    <div class="input-row">
+      <input id="videoUrl" type="text" placeholder="Paste video URL here (https://...)" />
+      <select id="format">
+        <option value="mp4">MP4 (Video)</option>
+        <option value="mp3">MP3 (Audio)</option>
+      </select>
+      <button id="downloadBtn" class="btn">Download</button>
+    </div>
+
+    <div id="status" class="status" role="status" aria-live="polite"></div>
+
+    <!-- Top ads: left & right -->
+    <div class="ad-row top-ads">
+      <a class="ad small-ad" href="#" target="_blank" rel="nofollow noopener">
+        <!-- ADS PLACEHOLDER: Home Top Left (insert PropellerAds tag here) -->
+      </a>
+      <a class="ad small-ad" href="#" target="_blank" rel="nofollow noopener">
+        <!-- ADS PLACEHOLDER: Home Top Right -->
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 5-second gate modal -->
+<div id="gate" class="gate hidden" aria-hidden="true">
+  <div class="gate-card">
+    <h3>Preparing your download…</h3>
+    <p>Watch this ad for <span id="count">5</span>s.</p>
+    <div class="gate-ad">
+      <!-- PropellerAds tag placeholder: This zone will render during the 5s gate -->
+    </div>
+    <button id="continueBtn" class="btn" disabled>Continue</button>
+  </div>
+</div>
+{% endblock %}

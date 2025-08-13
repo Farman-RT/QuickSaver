@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Admin (URL logs only)</h2>
+<form method="post" class="card">
+  <input name="password" type="password" placeholder="Admin password" />
+  <button class="btn">View</button>
+</form>
+
+{% if msg %}<p class="error">{{ msg }}</p>{% endif %}
+{% if rows %}
+<table class="table">
+  <thead><tr><th>ID</th><th>URL</th><th>Time</th></tr></thead>
+  <tbody>
+  {% for r in rows %}
+    <tr><td>{{ r['id'] }}</td><td>{{ r['url'] }}</td><td>{{ r['timestamp'] }}</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+{% endblock %}

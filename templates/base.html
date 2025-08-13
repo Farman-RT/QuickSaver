@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title or "QuicSaver" }}</title>
+  <meta name="description" content="QuicSaver - Fast online video downloader for YouTube, Facebook, Instagram and more.">
+  <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <meta name="robots" content="index,follow">
+  <meta name="theme-color" content="#0ea5e9">
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="/">QuicSaver</a>
+      <nav class="menu">
+        <a href="/">Home</a>
+        <a href="/adsense">About</a>
+        <a href="/earn">Earn</a>
+        <a href="/admin">Admin</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="container">
+    <!-- 3 small ads horizontally -->
+    <div class="ad-row footer-ads">
+      <a class="ad" href="#" target="_blank" rel="nofollow noopener">
+        <!-- Propeller/AdSense placeholder: Footer Ad1 -->
+      </a>
+      <a class="ad" href="#" target="_blank" rel="nofollow noopener">
+        <!-- Propeller/AdSense placeholder: Footer Ad2 -->
+      </a>
+      <a class="ad" href="#" target="_blank" rel="nofollow noopener">
+        <!-- Propeller/AdSense placeholder: Footer Ad3 -->
+      </a>
+    </div>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
