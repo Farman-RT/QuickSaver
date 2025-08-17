@@ -47,6 +47,10 @@ with app.app_context():
 def home():
     return render_template("home.html", title="QuicSaver - Fast Video Downloader")
 
+@app.route('/sw.js')
+def serve_sw():
+    return send_from_directory('static', 'sw.js')
+
 @app.route("/adsense")
 def adsense():
     return render_template("adsense.html", title="QuicSaver - Ads Preview")
