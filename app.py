@@ -7,6 +7,7 @@ import subprocess
 from flask import Flask, render_template, request, Response, g, jsonify
 from werkzeug.utils import secure_filename
 import config
+from flask import send_from_directory
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 TMP_DIR = os.path.join(BASE_DIR, "tmp")
@@ -178,15 +179,8 @@ def health():
     return {"status": "ok"}
 
 if __name__ == "__main__":
-    # For Render.com, PORT is provided via env variable
     port = int(os.environ.get("PORT", "5000"))
     host = os.environ.get("HOST", "0.0.0.0")
     debug = os.environ.get("FLASK_DEBUG", "0") == "1"
     app.run(host=host, port=port, debug=debug)
-
-import os
-
-if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
 
