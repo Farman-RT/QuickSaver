@@ -7,7 +7,7 @@ import subprocess
 from flask import Flask, render_template, request, Response, g, jsonify
 from werkzeug.utils import secure_filename
 import config
-from flask import send_from_directory
+
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 TMP_DIR = os.path.join(BASE_DIR, "tmp")
