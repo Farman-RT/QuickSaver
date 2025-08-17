@@ -45,6 +45,18 @@
       </a>
     </div>
   </footer>
+  <script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("/static/sw.js")
+      .then(function(reg) {
+        console.log("Service Worker Registered!", reg);
+      })
+      .catch(function(err) {
+        console.error("Service Worker registration failed:", err);
+      });
+  }
+</script>
+
 
   <script src="{{ url_for('static', filename='js/app.js') }}"></script>
 </body>
