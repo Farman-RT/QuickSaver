@@ -4,30 +4,44 @@
   <div class="hero-inner">
     <h1>Fast Video Downloader</h1>
     <p class="muted">Supports YouTube (priority), Facebook, Instagram & more.</p>
+
     <div class="input-row">
       <input id="videoUrl" type="text" placeholder="Paste video URL here (https://...)" />
       <select id="format">
         <option value="mp4">MP4 (Video)</option>
         <option value="mp3">MP3 (Audio)</option>
       </select>
-      <button id="downloadBtn" class="btn">Download</button>
     </div>
 
-    <div id="status" class="status" role="status" aria-live="polite"></div>
+    <!-- 🔹 Ad (hidden by default) -->
+    <div id="timed-ad" class="ad-row" style="display:none;">
+      <div class="ad small-ad">
+        <!-- Monetag Banner Ad Code -->
+        <script async src="https://example.monetag.com/ads.js"></script>
+        <ins class="monetag-ad" data-zone="9754291"></ins>
+        <script>
+          (adsbyMonetag = window.adsbyMonetag || []).push({});
+        </script>
+      </div>
+    </div>
 
-  
+    <!-- Download Button -->
+    <button id="downloadBtn" class="btn">Download</button>
+
+    <div id="status" class="status" role="status" aria-live="polite"></div>
   </div>
 </section>
 
-<!-- 5-second gate modal -->
- <div id="timed-ad" class="ad-row">
-          <div class="ad small-ad">
-            <!-- Monetag Banner Ad Code -->
-            <script async src="https://example.monetag.com/ads.js"></script>
-            <ins class="monetag-ad" data-zone="9754291"></ins> <!-- 👈 your banner zone ID -->
-            <script>
-              (adsbyMonetag = window.adsbyMonetag || []).push({});
-            </script>
-          </div>
-        </div>
+<!-- 🔹 Script -->
+<script>
+  document.getElementById("downloadBtn").addEventListener("click", function () {
+    let ad = document.getElementById("timed-ad");
+    if (ad) {
+      ad.style.display = "block";   // show ad
+      setTimeout(function () {
+        ad.style.display = "none";  // hide ad after 5 sec
+      }, 5000);
+    }
+  });
+</script>
 {% endblock %}
