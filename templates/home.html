@@ -16,33 +16,40 @@
 
     <div id="status" class="status"></div>
 
-    <!-- Top ads: left & right -->
-   <div class="ad-row top-ads">
-  <div class="ad small-ad">
-    <!-- Monetag: Home Top Left -->
-    <script async data-cfasync="false" src="//upgulpinon.com/1?z=9760480"></script>
-  </div>
+    <!-- 5-second Ad Gate -->
+    <div id="gate" class="hidden" aria-hidden="true">
+      <p>Please wait <span id="count">5</span> seconds…</p>
 
-  <div class="ad small-ad">
-    <!-- Monetag: Home Top Right -->
-    <script async data-cfasync="false" src="//upgulpinon.com/1?z=9760479"></script>
-  </div>
-</div>
+      <!-- Monetag ad inside gate -->
+      <div class="ad small-ad">
+        <script async data-cfasync="false" src="//upgulpinon.com/1?z=9760480"></script>
+      </div>
 
+      <button id="continueBtn" class="btn" disabled>Continue to Download</button>
+    </div>
+
+    <!-- Top ads -->
+    <div class="ad-row top-ads">
+      <div class="ad small-ad">
+        <script async data-cfasync="false" src="//upgulpinon.com/1?z=9760479"></script>
+      </div>
+      <div class="ad small-ad">
+        <script async data-cfasync="false" src="//upgulpinon.com/1?z=9760478"></script>
+      </div>
+    </div>
 
     <!-- Footer small ads (3) -->
     <div class="ad-row footer-ads">
-  <div class="ad">
-    <script async data-cfasync="false" src="//upgulpinon.com/1?z=9760478"></script>
-  </div>
-  <div class="ad">
-    <script async data-cfasync="false" src="//upgulpinon.com/1?z=9760476"></script>
-  </div>
-  <div class="ad">
-    <script async data-cfasync="false" src="//upgulpinon.com/1?z=9760477"></script>
-  </div>
-</div>
-
+      <div class="ad">
+        <script async data-cfasync="false" src="//upgulpinon.com/1?z=9760476"></script>
+      </div>
+      <div class="ad">
+        <script async data-cfasync="false" src="//upgulpinon.com/1?z=9760477"></script>
+      </div>
+      <div class="ad">
+        <script async data-cfasync="false" src="//upgulpinon.com/1?z=9754290"></script>
+      </div>
+    </div>
   </div>
 </section>
 {% endblock %}
