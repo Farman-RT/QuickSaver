@@ -16,23 +16,48 @@
 
     <div id="status" class="status"></div>
 
-    <!-- 🚨 5-second Gate Ad -->
+    <!-- 🚨 5-second Ad Gate -->
     <div id="gate" class="hidden" aria-hidden="true">
       <p>Please wait <span id="count">5</span> seconds…</p>
       <div class="ad small-ad">
-        <!-- 9760478 - Fabulous Anti-AdBlock -->
-        <script async data-cfasync="false" src="//upgulpinon.com/1?z=9760478"></script>
+        <!-- Loader for 5s gate ad -->
+        {% raw %}
+        <script>
+          (function(d,z,s,c){
+            s.src='//'+d+'/400/'+z; s.onerror=s.onload=E;
+            function E(){c&&c(); c=null}
+            try{(document.body||document.documentElement).appendChild(s)}catch(e){E()}
+          })('niwooghu.com',9760478,document.createElement('script'),_rpfitz)
+        </script>
+        {% endraw %}
       </div>
       <button id="continueBtn" class="btn" disabled>Continue to Download</button>
     </div>
 
-    <!-- Top ads (optional) -->
+    <!-- Top ads -->
     <div class="ad-row top-ads">
       <div class="ad small-ad">
-        <script async data-cfasync="false" src="//upgulpinon.com/1?z=9760479"></script>
+        {% raw %}
+        <script>
+          (function(d,z,s,c){
+            s.src='//'+d+'/400/'+z; s.onerror=s.onload=E;
+            function E(){c&&c(); c=null}
+            try{(document.body||document.documentElement).appendChild(s)}catch(e){E()}
+          })('niwooghu.com',9760476,document.createElement('script'),_rpfitz)
+        </script>
+        {% endraw %}
       </div>
+
       <div class="ad small-ad">
-        <script async data-cfasync="false" src="//upgulpinon.com/1?z=9760476"></script>
+        {% raw %}
+        <script>
+          (function(d,z,s,c){
+            s.src='//'+d+'/400/'+z; s.onerror=s.onload=E;
+            function E(){c&&c(); c=null}
+            try{(document.body||document.documentElement).appendChild(s)}catch(e){E()}
+          })('niwooghu.com',9754289,document.createElement('script'),_rpfitz)
+        </script>
+        {% endraw %}
       </div>
     </div>
 
