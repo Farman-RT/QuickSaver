@@ -4,16 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ title or "QuickSaver" }}</title>
-    <meta name="keywords" content="video downloader,YouTube video downloader">
+  <meta name="keywords" content="video downloader,YouTube video downloader">
   <meta name="description" content="QuicSaver - Fast online video downloader for YouTube, Facebook, Instagram and more.">
   <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   <meta name="robots" content="index,follow">
   <meta name="theme-color" content="#0ea5e9">
-  <!-- Monetag In-Page Push / Anti-AdBlock master script -->
+
+  <!-- ✅ Master loader (9760480 - Fair Anti-AdBlock In-Page Push) -->
   <script async data-cfasync="false" src="//upgulpinon.com/1?z=9760480"></script>
 </head>
 <body>
@@ -33,19 +31,22 @@
     {% block content %}{% endblock %}
   </main>
 
-<footer class="container">
-  <div class="ad-row footer-ads">
-    <div class="ad">
-      <script async data-cfasync="false" src="//upgulpinon.com/1?z=9760479"></script>
+  <footer class="container">
+    <div class="ad-row footer-ads">
+      <div class="ad">
+        <!-- Footer Left -->
+        <script async data-cfasync="false" src="//upgulpinon.com/1?z=9760479"></script>
+      </div>
+      <div class="ad">
+        <!-- Footer Middle -->
+        <script async data-cfasync="false" src="//upgulpinon.com/1?z=9760477"></script>
+      </div>
+      <div class="ad">
+        <!-- Footer Right -->
+        <script async data-cfasync="false" src="//upgulpinon.com/1?z=9760475"></script>
+      </div>
     </div>
-    <div class="ad">
-      <script async data-cfasync="false" src="//upgulpinon.com/1?z=9760478"></script>
-    </div>
-    <div class="ad">
-      <script async data-cfasync="false" src="//upgulpinon.com/1?z=9760476"></script>
-    </div>
-  </div>
-</footer>
+  </footer>
 
   <script src="{{ url_for('static', filename='js/app.js') }}"></script>
 </body>
