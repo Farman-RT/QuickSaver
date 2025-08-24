@@ -16,17 +16,21 @@
 
     <div id="status" class="status"></div>
 
-    <!-- 🚨 5-second Ad Gate -->
-    <div id="gate" class="hidden" aria-hidden="true">
-      <p>Please wait <span id="count">5</span> seconds…</p>
+    <!-- 🚨 5-second Interstitial Ad -->
+    <div id="interstitialAd" class="hidden" aria-hidden="true">
+      <p>Please wait <span id="countdown">5</span> seconds…</p>
       <div class="ad small-ad">
         {% raw %}
         <script>
-          (function(d,z,s,c){
-            s.src='//'+d+'/400/'+z; s.onerror=s.onload=E;
-            function E(){c&&c(); c=null}
-            try{(document.body||document.documentElement).appendChild(s)}catch(e){E()}
-          })('niwooghu.com',9760478,document.createElement('script'),_rpfitz)
+          setTimeout(function() {
+            (function(d, z, s){
+              s = document.createElement('script');
+              s.src = 'https://' + d + '/401/' + z;
+              try {
+                (document.body || document.documentElement).appendChild(s);
+              } catch(e){}
+            })('groleegni.net', 9765017);
+          }, 5000);
         </script>
         {% endraw %}
       </div>
@@ -61,4 +65,25 @@
     </div>
   </div>
 </section>
+
+<script>
+  // Countdown & enable continue button after 5 seconds
+  let count = 5;
+  const countdownEl = document.getElementById('countdown');
+  const continueBtn = document.getElementById('continueBtn');
+  const interstitialAd = document.getElementById('interstitialAd');
+
+  interstitialAd.classList.remove('hidden');
+
+  const timer = setInterval(() => {
+    count--;
+    countdownEl.textContent = count;
+    if(count <= 0){
+      clearInterval(timer);
+      continueBtn.disabled = false;
+      countdownEl.textContent = "0";
+    }
+  }, 1000);
+</script>
+
 {% endblock %}
