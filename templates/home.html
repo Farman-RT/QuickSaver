@@ -19,51 +19,18 @@
     <!-- 5-second Interstitial Ad -->
     <div id="interstitialAd" class="hidden">
       <p>Please wait <span id="countdown">5</span> seconds…</p>
-      <div class="ad small-ad" id="adContainer"></div>
+      <div class="ad small-ad" id="adContainer">
+        <!-- Ad script will be injected here by JS -->
+      </div>
       <button id="continueBtn" class="btn" disabled>Continue to Download</button>
     </div>
+
+    <!-- Top Ads (optional) -->
+    <div class="ad-row top-ads">
+      <div class="ad small-ad" id="topAd1"></div>
+      <div class="ad small-ad" id="topAd2"></div>
+    </div>
+
   </div>
 </section>
-
-<script>
-document.getElementById('downloadBtn').addEventListener('click', function() {
-  const url = document.getElementById('videoUrl').value.trim();
-  if(!url) return alert('Please enter a URL');
-
-  const interstitialAd = document.getElementById('interstitialAd');
-  const countdownEl = document.getElementById('countdown');
-  const continueBtn = document.getElementById('continueBtn');
-  const adContainer = document.getElementById('adContainer');
-
-  interstitialAd.classList.remove('hidden');
-
-  // Load ad script
-  const s = document.createElement('script');
-  s.src = 'https://groleegni.net/401/9765017';
-  adContainer.appendChild(s);
-
-  // Countdown
-  let count = 5;
-  countdownEl.textContent = count;
-  continueBtn.disabled = true;
-
-  const timer = setInterval(() => {
-    count--;
-    countdownEl.textContent = count;
-    if(count <= 0){
-      clearInterval(timer);
-      continueBtn.disabled = false;
-      countdownEl.textContent = "0";
-    }
-  }, 1000);
-});
-
-// Optional: Continue button click handler
-document.getElementById('continueBtn').addEventListener('click', function() {
-  const url = document.getElementById('videoUrl').value.trim();
-  if(!url) return alert('Please enter a URL');
-  // Call your download logic here
-  alert('Ready to download: ' + url);
-});
-</script>
 {% endblock %}
