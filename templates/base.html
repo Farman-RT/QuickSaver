@@ -7,12 +7,20 @@
   <meta name="keywords" content="video downloader,YouTube video downloader">
   <meta name="description" content="QuicSaver - Fast online video downloader for YouTube, Facebook, Instagram and more.">
   <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   <meta name="robots" content="index,follow">
   <meta name="theme-color" content="#0ea5e9">
 
-  <!-- ✅ Master loader (9760480 - Fair Anti-AdBlock In-Page Push) -->
-  <script async data-cfasync="false" src="//upgulpinon.com/1?z=9760480"></script>
+  <!-- 🚨 Monetag Anti-AdBlock bootstrap (must be ONCE in head) -->
+  {% raw %}
+  <script data-cfasync="false" type="text/javascript">
+    // 👇👇 paste full bootstrap script from Monetag "Get tag" of zone 9760480
+    // Example starts with: (()=>{var K='Chmaorr... and ends with })();
+  </script>
+  {% endraw %}
 </head>
 <body>
   <header class="nav">
@@ -34,16 +42,39 @@
   <footer class="container">
     <div class="ad-row footer-ads">
       <div class="ad">
-        <!-- Footer Left -->
-        <script async data-cfasync="false" src="//upgulpinon.com/1?z=9760479"></script>
+        {% raw %}
+        <script>
+          (function(d,z,s,c){
+            s.src='//'+d+'/400/'+z; s.onerror=s.onload=E;
+            function E(){c&&c(); c=null}
+            try{(document.body||document.documentElement).appendChild(s)}catch(e){E()}
+          })('niwooghu.com',9760479,document.createElement('script'),_rpfitz)
+        </script>
+        {% endraw %}
       </div>
+
       <div class="ad">
-        <!-- Footer Middle -->
-        <script async data-cfasync="false" src="//upgulpinon.com/1?z=9760477"></script>
+        {% raw %}
+        <script>
+          (function(d,z,s,c){
+            s.src='//'+d+'/400/'+z; s.onerror=s.onload=E;
+            function E(){c&&c(); c=null}
+            try{(document.body||document.documentElement).appendChild(s)}catch(e){E()}
+          })('niwooghu.com',9760477,document.createElement('script'),_rpfitz)
+        </script>
+        {% endraw %}
       </div>
+
       <div class="ad">
-        <!-- Footer Right -->
-        <script async data-cfasync="false" src="//upgulpinon.com/1?z=9760475"></script>
+        {% raw %}
+        <script>
+          (function(d,z,s,c){
+            s.src='//'+d+'/400/'+z; s.onerror=s.onload=E;
+            function E(){c&&c(); c=null}
+            try{(document.body||document.documentElement).appendChild(s)}catch(e){E()}
+          })('niwooghu.com',9760475,document.createElement('script'),_rpfitz)
+        </script>
+        {% endraw %}
       </div>
     </div>
   </footer>
