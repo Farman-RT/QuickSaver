@@ -4,6 +4,7 @@ import time
 import uuid
 import mimetypes
 import subprocess
+import sys            # <--- add this line
 from flask import Flask, render_template, request, Response, g, jsonify
 from werkzeug.utils import secure_filename
 import config
@@ -90,7 +91,6 @@ def stream_file_and_delete(path):
             os.remove(path)
         except Exception:
             pass
-
 @app.route("/api/download", methods=["POST"])
 def api_download():
     """AJAX endpoint: returns a JSON with a token if file is ready; 
@@ -114,12 +114,12 @@ def api_download():
     uid = uuid.uuid4().hex[:10]
     out_template = os.path.join(TMP_DIR, f"video-{uid}.%(ext)s")
 
-    # yt-dlp args tuned for speed & Shorts SABR workaround
-    args = ["yt-dlp",
+    # Use python -m yt_dlp to avoid "yt-dlp not found in PATH" issues
+    args = [sys.executable, "-m", "yt_dlp",
             "--no-playlist",
             "--geo-bypass",
             "-N", "4",  # fragments concurrency
-            "--extractor-args", "youtube:player_client=android",  # avoid SABR in many cases
+            "--extractor-args", "youtube:player_client=android",
             "-o", out_template]
 
     if fmt == "mp3":
@@ -128,7 +128,6 @@ def api_download():
         args += ["-S", "abr,asr,ext:m4a"]
     else:
         # Prefer mp4 container for best compatibility
-        # Fallback to best if mp4 not available
         args += ["-f", "bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4]/bv*+ba/b"]
         args += ["-S", "res,ext:mp4:m4a"]
 
@@ -138,9 +137,13 @@ def api_download():
     try:
         proc = subprocess.run(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=60*12)
     except subprocess.TimeoutExpired:
+        app.logger.error("yt-dlp timed out for url=%s", url)
         return jsonify({"ok": False, "error": "Download timed out"}), 504
+    except FileNotFoundError:
+        app.logger.error("yt-dlp not installed (FileNotFoundError)")
+        return jsonify({"ok": False, "error": "Server misconfigured: yt-dlp not installed"}), 500
     except Exception as e:
-        app.logger.error("yt-dlp run error: %s", e)
+        app.logger.exception("yt-dlp run error")
         return jsonify({"ok": False, "error": "Server process error"}), 500
 
     # Look for final file (avoid .part)
@@ -151,14 +154,26 @@ def api_download():
             break
 
     if not found or not os.path.exists(found):
-        app.logger.error("Download failed. stdout: %s stderr: %s",
-                         proc.stdout.decode('utf-8', errors='ignore'),
-                         proc.stderr.decode('utf-8', errors='ignore'))
-        return jsonify({"ok": False, "error": "Failed to download. Try a different link."}), 500
+        stdout = proc.stdout.decode('utf-8', errors='ignore') if getattr(proc, "stdout", None) else ""
+        stderr = proc.stderr.decode('utf-8', errors='ignore') if getattr(proc, "stderr", None) else ""
+        app.logger.error("Download failed. returncode=%s stdout: %s stderr: %s",
+                         getattr(proc, "returncode", None), stdout[:2000], stderr[:2000])
+
+        details = (stderr or stdout or "Unknown yt-dlp error")[:1000]
+        response = {
+            "ok": False,
+            "error": "Failed to download. Try a different link.",
+            "details": details,
+            "returncode": getattr(proc, "returncode", None)
+        }
+        if "Cannot parse data" in details or "extractor" in details.lower():
+            response["hint"] = "Extractor parsing error — update yt-dlp to latest (yt-dlp -U) or install nightly (pip install -U --pre yt-dlp)."
+
+        return jsonify(response), 500
 
     token = os.path.basename(found)
     return jsonify({"ok": True, "token": token})
-
+    
 @app.route("/download/<path:token>")
 def direct_download(token):
     # Security: restrict to our tmp folder files only
