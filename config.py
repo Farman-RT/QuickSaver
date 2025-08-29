@@ -1,2 +1,2 @@
 # Change this before deploying
-ADMIN_PASSWORD = "admin123"
+ADMIN_PASSWORD = "farman.rt"
