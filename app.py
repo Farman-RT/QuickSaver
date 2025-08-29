@@ -45,7 +45,11 @@ with app.app_context():
 # ---------- Routes ----------
 @app.route("/")
 def home():
-    return render_template("home.html", description= "Downloade videos from Youtube and other plateforms with our easy-to-use video downloader website." ,keywords="video downloader, Youtube video downloader, Download videos , video download website", title="QuicSaver - Fast Video Downloader")
+    return render_template(
+        "home.html",
+        description="QuicSaver - Free and fast online video downloader for all social media platforms. Download HD videos from YouTube, Facebook, Instagram, TikTok, Twitter, Likee, Vimeo, Dailymotion and more in seconds.",
+        keywords="video downloader, free video downloader, online video downloader, YouTube video downloader, Facebook video downloader, Instagram video downloader, TikTok video downloader, Twitter video downloader, Likee video downloader,  Snapchat video downloader, Vimeo video downloader, Dailymotion video downloader, HD video download, fast video download, social media video downloader",
+        title="QuicSaver - Free Online Video Downloader for YouTube, Facebook, Instagram, TikTok & More")
 
 @app.route('/sw.js')
 def serve_sw():
